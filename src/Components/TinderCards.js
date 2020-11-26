@@ -11,14 +11,19 @@ const TinderCards = () => {
 
     useEffect(() => {
         //firebase stuff
-        database.collection('people').onSnapshot((snapshot) => (
+        const unsubscribe = database.collection('people').onSnapshot((snapshot) => (
             setPeople(snapshot.docs.map(doc => doc.data()))
         ))
+
+        return () => {
+            //this is the cleanup...
+            // this detaches the listener in the browser...
+            unsubscribe();
+        }
     }, [])
 
     return ( 
         <div>
-            <h3>TinderCard</h3>
             <div className="tinderCards__cardContainer">
                 {people.map(person => (
                     <TinderCard
@@ -31,7 +36,7 @@ const TinderCards = () => {
                         </div>
                         
                     </TinderCard>
-
+                
                 ))}
             </div>
         </div>
