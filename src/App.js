@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import Header from './Components/Header';
-import TinderCards from './Components/TinderCards'
+import TinderCards from './Components/TinderCards';
+import Chats from './Components/Chats';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import SwipeButtons from './Components/SwipeButtons';
 
@@ -15,7 +16,7 @@ function App() {
         <Switch>
             <Route path="/chat">
               <Header backbutton="/" />
-              <h1>I am the Chat Page</h1>
+              <Chats />
             </Route>
             <Route path="/yoma">
               <h1>Yo, Yoma on this one 🔥</h1>
