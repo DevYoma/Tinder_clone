@@ -10,17 +10,18 @@ function App() {
  
   return (
     <div className="app">
-      <Header />
       <Router>
         {/* all routes sit in here */}
         <Switch>
             <Route path="/chat">
+              <Header backbutton="/" />
               <h1>I am the Chat Page</h1>
             </Route>
             <Route path="/yoma">
               <h1>Yo, Yoma on this one 🔥</h1>
             </Route>
             <Route path="/">
+              <Header />
               <TinderCards />
               <SwipeButtons />
             </Route>

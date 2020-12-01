@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import TinderCard from 'react-tinder-card';
-import Mark from '../assets/Mark.jpg';
-import Steve from '../assets/SteveJobs.jpg';
 import './TinderCards.css';
 import database from '../Firebase/Firebase';
 
