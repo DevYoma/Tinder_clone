@@ -26,6 +26,7 @@ const ChatScreen = () => {
     const handleSend = (e) => {
         e.preventDefault();
         setMessages([...messages, {message: input}])
+        // honestly, this is the magic line here, just so wonderful
         setInput('');
     }
 
