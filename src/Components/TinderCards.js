@@ -4,20 +4,31 @@ import './TinderCards.css';
 import database from '../Firebase/Firebase';
 import Yoma from '../assets/yoma.jpg';
 import TinderLogo from '../assets/tinderLogo.png'
+import axios from '../Axios/Axios';
 
 const TinderCards = () => {
 
-    const [people, setPeople] = useState([
-        {
-            name: "Emore Ogheneyoma", 
-            url: Yoma
-        },
-        {
-            name: "Tinder mf",
-            url: TinderLogo
-        }
-    ])
+    const [people, setPeople] = useState([])
 
+    useEffect(() => {
+        async function fetchData(){
+            const request = await axios.get('/tinder/cards')
+
+            setPeople(request.data);
+            console.log(people);
+        }
+        
+        fetchData();
+    }, [])
+    
+    // {
+    //     name: "Emore Ogheneyoma", 
+    //     url: Yoma
+    // },
+    // {
+    //     name: "Tinder mf",
+    //     url: TinderLogo
+    // }
     // useEffect(() => {
     //     const unsubscribe = database.collection('people').onSnapshot((snapshot) => (
     //         setPeople(snapshot.docs.map(doc => doc.data()))
@@ -48,7 +59,7 @@ const TinderCards = () => {
                         onSwipe={(dir) => swiped(dir, person.name)}
                         onCardLeftScreen={() => outOfFrame(person.name)}
                     >
-                        <div style={{ backgroundImage: `url(${person.url})` }} className="card">
+                        <div style={{ backgroundImage: `url(${person.imgUrl})` }} className="card">
                             <h3>{person.name}</h3>
                         </div>
                         
