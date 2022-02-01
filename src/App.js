@@ -1,26 +1,34 @@
 import React, { useState } from 'react';
 import './App.css';
 import Header from './Components/Header';
-import TinderCards from './Components/TinderCards'
+import TinderCards from './Components/TinderCards';
+import Chats from './Components/Chats';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import SwipeButtons from './Components/SwipeButtons';
+import ChatScreen from './Components/ChatScreen';
 
 function App() {
   
  
   return (
     <div className="app">
-      <Header />
       <Router>
         {/* all routes sit in here */}
         <Switch>
+            <Route path="/chat/:name">
+              <Header backbutton="/chat" />
+              <ChatScreen />
+            </Route>
+
             <Route path="/chat">
-              <h1>I am the Chat Page</h1>
+              <Header backbutton="/" />
+              <Chats />
             </Route>
-            <Route path="/yoma">
-              <h1>Yo, Yoma on this one 🔥</h1>
-            </Route>
+            
             <Route path="/">
+              <Header />
               <TinderCards />
+              <SwipeButtons />
             </Route>
         </Switch>
         
